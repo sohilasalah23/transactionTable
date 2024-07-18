@@ -1,0 +1,44 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-white">transaction table :</h1>
+            <div class="  col-md-7 col-xl-6 py-5 text-white m-auto ">
+                <label for="search " class=" text-main fs-5"> search</label>
+                <input [(ngModel)]="searchTerm" type="text" placeholder="search here ...." class="form-control  mb-5">
+            </div>
+            <div class="row ">
+                <div class="col-md-12 py-4 mx-auto ">
+                    <table class="table mb-5 py-4  text-center  mx-auto">
+                        <thead class="mb-1">
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>Transaction Date</th>
+                                <th>Transaction Amount</th>
+                                <th>Transaction chart</th>
+                            </tr>
+
+
+                        </thead>
+                        <tbody>
+                            <tr class="my-3" *ngFor="let user of users |search:searchTerm ">
+                                <td class="fs-4">{{user.name}}</td>
+                                <td class="fs-4">{{user.date}}</td>
+                                <td class=" fs-4">{{user.amount}}</td>
+                                <td class=" fs-4"><button (click)="getTransactionsOfUser(user.id)"
+                                        class="btn btn-outline-dark">chart
+
+                                    </button></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9 m-auto">
+                    <app-chart [chartList]="chartList"></app-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
